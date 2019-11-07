@@ -109,6 +109,7 @@
 			])
         },
         mounted() {
+            this.$dataLayer.addEvent('dataRequest', {})
 		}
     }
 </script>
