@@ -40,6 +40,9 @@ export default {
 					})
 				} else {
 					context.commit('authChanged', {user: null, idToken: null})
+					if (router.currentRoute.meta.authClaims) {
+						router.push({name: 'auth', query: {redirect: router.currentRoute.query.redirect || '/'}})
+					}
 				}
 			})
 		}
