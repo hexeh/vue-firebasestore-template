@@ -4,21 +4,35 @@
   			<v-col cols = '4'>
   				<v-card flat style = 'box-shadow: 0 0 60px 10px rgba(200,200,200,0.5); word-break: inherit;'>
 			  		<v-card-title class = 'font-weight-light display-2'>Welcome back, <b>{{userGreeting}}</b>!</v-card-title>
-                    <v-card-text v-if = '!dataLoading'>
-                        <v-layout column class = 'mx-0 headline'>
+                    <v-card-text>
+                        <v-layout column class = 'mx-0 title font-weight-regular' v-if = '!dataLoading'>
                             <span v-if = 'userData === undefined || Object.keys(userData).length == 0'>You don't have any stored data</span>
   				            <span v-else>You have stored data</span>
+                        </v-layout>
+                        <v-layout column v-else class = 'mx-0 my-1'>
+                            <v-skeleton-loader type = 'heading' tile></v-skeleton-loader>
                         </v-layout>
                     </v-card-text>
 			  	</v-card>
   			</v-col>
             <v-col cols = '4'>
-  				<v-card flat style = 'box-shadow: 0 0 60px 10px rgba(200,200,200,0.5); height: 100%;' @click = 'setTestData'>
-                    <v-layout fill-height row align-center justify-center class = 'black--text'>
-                        <v-icon large left color = 'primary'>mdi-shape-square-plus</v-icon>
-                        <span class = 'font-weight-light display-2'>Add Data</span>
-			  		</v-layout>
-  				</v-card>
+                <v-tooltip bottom allow-overflow>
+                    <template v-slot:activator = '{on}'>
+                        <v-card
+                            flat 
+                            style = 'box-shadow: 0 0 60px 10px rgba(200,200,200,0.5); height: 100%;' 
+                            @click = 'setTestData'
+                            v-on = 'on'
+                            :disabled = 'userData && Object.keys(userData).length >= 10'
+                        >
+                            <v-layout fill-height row align-center justify-center class = 'black--text'>
+                                <v-icon large left color = 'primary'>mdi-shape-square-plus</v-icon>
+                                <span class = 'font-weight-light display-2'>Add Data</span>
+                            </v-layout>
+                        </v-card>
+                    </template>
+                    <span>You can store up to 10 properties</span>
+                </v-tooltip>
             </v-col>
   		</v-row>
         <v-row justify = 'center' v-if = 'dataLoading'>
