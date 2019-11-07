@@ -5,7 +5,7 @@ import "firebase/firestore"
 
 export default {
 	avatar: (state) => {
-		return state.user && state.user.photoURL || 'require("@/assets/account-circle.svg")'
+		return state.user && state.user.photoURL || require("@/assets/account-circle.svg")
 	},
 	isAuthorized: (state) => {
 		return state.user && state.user.refreshToken && state.user.refreshToken.length > 0
