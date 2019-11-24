@@ -1,6 +1,6 @@
 <template>
 	<v-layout style = 'flex: 0 0 auto !important;'>
-		<v-dialog v-model='visibility' origin='top center' width = '420px'>
+		<v-dialog v-model = 'visibility' origin = 'top center' width = '420px' @keydown = 'closeOnEvent' @click:outside = 'closeDialog'>
 		  <signin></signin>
 		</v-dialog>
 	</v-layout>
@@ -14,32 +14,34 @@
 
 	export default {
 		name: 'Login',
-		props: ['initialState', 'callback'],
+		props: ['visibility', 'callback'],
 		mixins: [rules],
 		components: {Signin},
 		data() {
 			return {
-				visibility: this.initialState,
 				indicator: false
 			}
 		},
 		watch: {
-			initialState(value) {
-				this.visibility = value;
-			},
-			visibility(value) {
-				this.$root.$emit('signinDialogVisiblityChanged', value);
-			},
 			indicatorMain(ov, nv) {
 				if (!ov && nv && this.loginErrors === null) {
 					this.callback && this.callback()
-					this.visibility = false
+					this.closeDialog()
 				}
 			}
 		},
 		computed: {
 			...mapGetters(['indicatorMain', 'loginErrors'])
 		},
-		methods: {}
+		methods: {
+			closeDialog() {
+				this.$emit('update:visibility', false)
+			},
+			closeOnEvent(e) {
+				if (e.code == 'Escape') {
+					this.closeDialog()
+				}
+			}
+		}
 	}
 </script>

@@ -48,11 +48,11 @@
 						</v-list-item-avatar>
 					</template>
 				</v-list-item>
-				<v-divider inset></v-divider>
+				<v-divider inset :key = '`divider_${p.key}`'></v-divider>
 			</template>
 		</v-list>
 		<!--v-btn depressed block @click = 'showLogin = true'>Show Login</v-btn!-->
-		<login :initialState = 'showLogin' :callback = 'connectPasswordProvider'></login>
+		<login :visibility.sync = 'showLogin' :callback = 'connectPasswordProvider'></login>
 	</v-layout>
 </template>
 

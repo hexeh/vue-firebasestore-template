@@ -48,7 +48,7 @@
 				</v-card>
 			</v-layout>
 		</v-menu>
-		<providers :initialState = 'dialogs.provider'></providers>
+		<providers :visibility.sync = 'dialogs.provider'></providers>
 	</v-layout>
 </template>
 
@@ -62,11 +62,6 @@
 			dialogs: {
 				provider: false
 			}
-		}),
-		mounted() {
-			this.$root.$on('providersDialogVisiblityChanged', (v) => {
-				this.dialogs.provider = v;
-			})
-		}
+		})
 	}
 </script>
