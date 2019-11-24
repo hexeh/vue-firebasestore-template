@@ -29,7 +29,8 @@
 						></v-text-field>
 						<v-list-item-action>
 							<v-btn
-								text 
+								text
+								:loading = 'indicator' 
 								color = 'success' 
 								@click='user.password && user.password.length? $store.dispatch(p.action, user.password):$store.dispatch(p.action)'
 							>Connect</v-btn>
@@ -39,6 +40,7 @@
 						<v-list-item-action>
 							<v-btn
 								:disabled = 'authProviders.length < 2' 
+								:loading = 'indicator'
 								text color = 'error'
 								@click = '$store.dispatch("unlinkProvider", p.key)'
 							>Disconnect</v-btn>
@@ -95,6 +97,9 @@
 			}
 		},
 		computed: {
+			indicator() {
+				return this.$store.state.linkIndicator
+			},
 			dictProviders() {
 				let o = {}
 				for (let pr of this.authProviders) {

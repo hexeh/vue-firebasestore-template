@@ -1,6 +1,6 @@
 <template>
 	<v-layout style = 'flex: 0 0 auto !important;'>
-		<v-dialog v-model='visibility' origin='top center' width = '420px'>
+		<v-dialog v-model='visibility' origin='top center' width = '320px'>
 		  <signin></signin>
 		</v-dialog>
 	</v-layout>

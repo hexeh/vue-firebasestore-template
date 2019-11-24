@@ -17,6 +17,7 @@ export default new Vuex.Store({
 		preferences: {},
 		authIndicator: true,
 		storeIndicator: false,
+		linkIndicator: false,
 		errors: {
 			login: null,
 			update: null,

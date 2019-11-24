@@ -5,7 +5,7 @@
   <v-layout v-else column fill-height align-center justify-center ma-2>
 		<v-row>
 			<v-col cols = '6' class = 'my-auto'>
-				<v-card flat min-width = '420px' style = 'box-shadow: 0 0 60px 10px rgba(200,200,200,0.5);'>
+				<v-card flat min-width = '320px' style = 'box-shadow: 0 0 60px 10px rgba(200,200,200,0.5);'>
 					<v-card-title class = 'font-weight-light display-2'>Hello there!</v-card-title>
 					<v-card-text>
 						<v-layout column class = 'black--text body-1'>

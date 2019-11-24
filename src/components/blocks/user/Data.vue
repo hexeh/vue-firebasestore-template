@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
   		<v-row justify = 'center' class = 'mb-4'>
-  			<v-col cols = '4'>
+  			<v-col :cols = '$vuetify.breakpoint.smAndUp? 4:12'>
   				<v-card flat style = 'box-shadow: 0 0 60px 10px rgba(200,200,200,0.5); word-break: inherit;'>
 			  		<v-card-title class = 'font-weight-light display-2'>Welcome back, <b>{{userGreeting}}</b>!</v-card-title>
                     <v-card-text>
@@ -15,7 +15,7 @@
                     </v-card-text>
 			  	</v-card>
   			</v-col>
-            <v-col cols = '4'>
+            <v-col :cols = '$vuetify.breakpoint.smAndUp? 4:12'>
                 <v-tooltip bottom allow-overflow>
                     <template v-slot:activator = '{on}'>
                         <v-card
@@ -24,6 +24,7 @@
                             @click = 'setTestData'
                             v-on = 'on'
                             :disabled = 'userData && Object.keys(userData).length >= 10'
+                            min-height = '64px'
                         >
                             <v-layout fill-height row align-center justify-center class = 'black--text'>
                                 <v-icon large left color = 'primary'>mdi-shape-square-plus</v-icon>
@@ -49,7 +50,7 @@
         </v-row>
         <template v-else>
             <v-row justify = 'center' v-for = '(v,k,i) in userData' :key = 'i'>
-                <v-col cols = '8'>
+                <v-col :cols = '$vuetify.breakpoint.smAndUp? 4:12'>
                     <v-card flat style = 'box-shadow: 0 0 60px 10px rgba(200,200,200,0.5);'>
                         <v-card-text>
                             <v-list-item>
@@ -62,7 +63,7 @@
                                         text 
                                         color = 'error' 
                                         @click = 'dropProperty(k)'
-                                    >Drop Property</v-btn>
+                                    >Drop</v-btn>
                                 </v-list-item-action>
                             </v-list-item>
                         </v-card-text>

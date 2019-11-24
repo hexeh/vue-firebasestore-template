@@ -1,12 +1,12 @@
 <template>
-	<v-card min-width='400px' max-width = '400px' flat class='my-1' style='box-shadow: 0 0 60px 10px rgba(200,200,200,0.5);'>
+	<v-card min-width='320px' max-width = '400px' flat class='my-1' style='box-shadow: 0 0 60px 10px rgba(200,200,200,0.5);'>
 		<v-card-title class='font-weight-light display-1'>Sign in here</v-card-title>
 		<v-card-text class='mt-5 pb-0'>
-			<v-form v-model='formValid' class='my-2'>
+			<v-form v-model = 'formValid' class='my-2'>
 				<v-text-field 
 					@blur = '$store.commit("flushErrors")'
 					outlined 
-					v-model='user.login' 
+					v-model = 'user.login' 
 					label='Email' 
 					hint='Please enter a valid email address' 
 					autocomplete='username' 

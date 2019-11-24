@@ -1,6 +1,6 @@
 <template>
 	<v-layout fill-height column align-center justify-center>
-		<v-scale-transition key = '0' mode = 'in-out' leave-absolute v-show ='!create'>
+		<v-scale-transition key = '0' mode = 'in-out' leave-absolute v-show = '!create'>
 			<template v-if = '!create'>
 				<v-layout column align-center justify-center>
 					<signin></signin>
@@ -8,7 +8,7 @@
 				</v-layout>
 			</template>
 		</v-scale-transition>
-		<v-scale-transition key = '0' mode = 'in-out' leave-absolute v-show ='create'>
+		<v-scale-transition key = '0' mode = 'in-out' leave-absolute v-show = 'create'>
 			<template v-if ='create'>
 				<v-layout column align-center justify-center>
 					<signup></signup>

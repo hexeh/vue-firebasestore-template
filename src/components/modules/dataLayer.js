@@ -30,7 +30,7 @@ export default {
     },
     methods: {
         pushObject(o) {
-            this.lastMessage = 0
+            this.lastMessage = o
         },
         addEvent(e,d) {
             this.lastMessage = {

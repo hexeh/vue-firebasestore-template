@@ -23,15 +23,25 @@ export default {
 	authByGoogle: async (context) => {
 		context.state.authIndicator = true
 		let provider = new firebase.auth.GoogleAuthProvider()
-		provider.setCustomParameters({'prompt': 'consent'})
-		let authProviderData = await firebase.auth().signInWithPopup(provider).catch( (errorLogin) => {
+		// Web Options
+		//provider.setCustomParameters({'prompt': 'consent'})
+		//let authProviderData = await firebase.auth().signInWithPopup(provider).catch( (errorLogin) => {
+		//	context.commit('applyErrors', {...errorLogin, type: 'login'})
+		//})
+		// Cordova Compatible Options
+		firebase.auth().signInWithRedirect(provider).catch( (errorLogin) => {
 			context.commit('applyErrors', {...errorLogin, type: 'login'})
 		})
 	},
 	authByGithub: async (context) => {
 		context.state.authIndicator = true
 		let provider = new firebase.auth.GithubAuthProvider()
-		let authProviderData = await firebase.auth().signInWithPopup(provider).catch( (errorLogin) => {
+		// Web Options
+		// let authProviderData = await firebase.auth().signInWithPopup(provider).catch( (errorLogin) => {
+		//	context.commit('applyErrors', {...errorLogin, type: 'login'})
+		//})
+		// Cordova Compatible Options
+		firebase.auth().signInWithRedirect(provider).catch( (errorLogin) => {
 			context.commit('applyErrors', {...errorLogin, type: 'login'})
 		})
 	},
